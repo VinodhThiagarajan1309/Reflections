@@ -1,0 +1,45 @@
+# this is an example of the Uber API
+# as a demonstration of an API spec in YAML
+swagger: '2.0'
+info:
+  title: Uber API
+  description: Move your app forward with the Uber API
+  version: "1.0.0"
+# the domain of the service
+host: api.openweathermap.org
+# array of all schemes that your API supports
+schemes:
+  - https
+# will be prefixed to all paths
+basePath: /data/2.5
+produces:
+  - application/json
+paths:
+  /weather:
+    get:
+      tags:
+      - "weather"
+      summary: "Get Weather By City"
+      description: "Pass in a City name as a input paramter"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "q"
+        in: "query"
+        description: "City name to be provided here"
+        required: true
+        type: "string"
+      - name: "APPID"
+        in: "query"
+        description: "API Key"
+        required: true
+        type: "string"
+        default: "a15dc5154ed56253325131bf5d8bb71c" 
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid status value"
