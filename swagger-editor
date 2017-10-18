@@ -1,0 +1,41 @@
+swagger: "2.0"
+info:
+  description: ""
+  version: "1.0.0"
+  title: "api-elastic-search"
+host: "api.openweathermap.org"
+basePath: "/data/2.5"
+tags:
+- name: "weather"
+  description: "Access to Open Weather Maps"
+schemes:
+- "http"
+paths:
+  /weather:
+    get:
+      tags:
+      - "weather"
+      summary: "Get Weather By City"
+      description: "Pass in a City name as a input paramter"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "q"
+        in: "query"
+        description: "City name to be provided here"
+        required: true
+        type: "string"
+      - name: "APPID"
+        in: "query"
+        description: "API Key"
+        required: true
+        type: "string"
+        default: "a15dc5154ed56253325131bf5d8bb71c" 
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid status value"
